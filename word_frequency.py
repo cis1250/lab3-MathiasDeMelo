@@ -9,6 +9,7 @@
 
 import re
 
+
 #This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
 def is_sentence(text):
     # Check if the text is not empty and is a string
@@ -33,5 +34,24 @@ user_sentence = input("Enter a sentence: ")
 
 while (is_sentence(user_sentence) == False):
     print("This does not meet the criteria for a sentence.")
-    user_input = input("Enter a sentence: ")
+    user_sentence = input("Enter a sentence: ")
     
+words = user_sentence.split()
+
+unique_words = []
+unique_words_lower = []
+word_frequencies = []
+
+for word in words:
+    word_lower = word.lower()
+    if word_lower in unique_words_lower:
+        index = unique_words_lower.index(word_lower)
+        word_frequencies[index] += 1
+    else:
+        unique_words.append(word)
+        unique_words_lower.append(word_lower)
+        word_frequencies.append(1)
+
+print("\nWord user_frequencies:")
+for i in range(len(unique_words)):
+    print(f"{unique_words[i]}: {word_frequencies[i]}")
